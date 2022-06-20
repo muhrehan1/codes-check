@@ -757,16 +757,6 @@ function view_more_function() {
                             line_name:line_name,
                             alumni_chapter_affliation:alumni_chapter_affliation,
                             due_amount:due_amount,
-
-                            // homephone:homephone,
-                            // mobilephone:mobilephone,
-                            // chaptercrossed:chaptercrossed,
-                            // officeheld:officeheld,
-                            // fratname:fratname,
-                            // datecross:datecross,
-                            // alumnichapteraffliation:alumnichapteraffliation,
-                            // dueamount:dueamount,
-                            // linename:linename
                         },
                         success: function(response) {
                             jQuery("#loadingimgupdate").hide();

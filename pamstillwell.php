@@ -69,11 +69,12 @@ function data_calendario(){
 
 
         echo "{title: '$user_chest', start: '$created_data',
-popup: {
-title: 'This is the title',
-descri: 'This is the description',
-}    
-},";
+            popup: {
+            title: 'This is the title',
+            descri: 'This is the description',
+            
+            }    
+            },";
     }
 }
 
@@ -1095,21 +1096,45 @@ function um_current_user_profile(){
 
                                 <div class="section">
                                     <div class="tab">
-                                        <button class="tablinks" onclick="openCity(event, 'Dashboard')" id="defaultOpen">My Dashboard</button>
-                                        <button class="tablinks" onclick="openCity(event, 'fitness-holistic-week')">Challenge of the week</button>
-                                        <button class="tablinks" onclick="openCity(event, 'presentation-recipe-week')">Recipe of the week</button>
-                                        <button class="tablinks" onclick="openCity(event, 'bonus-extras')">Bonus Material</button>
-                                        <button class="tablinks" onclick="openCity(event, 'my-zoom-videos')">Techniques</button>
-                                        <button class="tablinks" onclick="openCity(event, 'my-fitness-videos')">Workout videos</button>
-                                        <button class="tablinks" onclick="openCity(event, 'interviews-videos')">Presentations/Guest Speakers</button>
-                                        <button class="tablinks fitness" onclick="openCity(event, 'fitness-measurements')">Fitness Measurements</button>
-                                        <div id="sub-btn1" style="display:none;">
-                                            <button class="tablinks" onclick="openCity(event, 'mybuttonrecorddata')">Record My Data</button>
-                                            <button class="tablinks" onclick="openCity(event, 'mybuttonhistory')">My History</button>
-                                        </div>
-                                        <!--                                        <button class="tablinks" onclick="openCity(event, 'fitness-user-data')">Measurements Record</button>-->
-                                        <button class="tablinks" onclick="openCity(event, 'recipes')">Recipes</button>
-                                        <button class="tablinks" onclick="openCity(event, 'printableresources')">Printable Resources</button>
+                                        <?php
+                                        global $current_user;
+                                        $email = $current_user->user_email;
+                                        $user_id = $current_user->ID;
+                                        global $wpdb;
+                                        $results = $wpdb->get_results( "SELECT * FROM wp_ihc_user_levels WHERE user_id = {$user_id}", OBJECT );
+
+                                        ob_start();
+                                        ?>
+                                        <?php if( $results[0]->level_id == 2){ ?>
+                                            <button class="tablinks" onclick="openCity(event, 'Dashboard')" id="defaultOpen">My Dashboard</button>
+                                            <button class="tablinks" onclick="openCity(event, 'fitness-holistic-week')">Challenge of the week</button>
+                                            <button class="tablinks" onclick="openCity(event, 'presentation-recipe-week')">Recipe of the week</button>
+                                            <button class="tablinks" onclick="openCity(event, 'my-zoom-videos')">Techniques</button>
+                                            <button class="tablinks" onclick="openCity(event, 'my-fitness-videos')">Workout videos</button>
+                                            <button class="tablinks" onclick="openCity(event, 'interviews-videos')">Presentations/Guest Speakers</button>
+                                            <button class="tablinks fitness" onclick="openCity(event, 'fitness-measurements')">Fitness Measurements</button>
+                                            <button class="tablinks" onclick="openCity(event, 'stretched')">Stretches</button>
+                                            <div id="sub-btn1" style="display:none;">
+                                                <button class="tablinks" onclick="openCity(event, 'mybuttonrecorddata')">Record My Data</button>
+                                                <button class="tablinks" onclick="openCity(event, 'mybuttonhistory')">My History</button>
+                                            </div>
+                                            <button class="tablinks" onclick="openCity(event, 'bonus-extras')">Bonus Material</button>
+                                            <?php
+                                        }?>
+                                        <?php if( $results[0]->level_id == 3){ ?>
+
+                                            <button class="tablinks" onclick="openCity(event, 'Dashboard')" id="defaultOpen">My Dashboard</button>
+                                            <button class="tablinks" onclick="openCity(event, 'fitness-holistic-week')">Challenge of the week</button>
+                                            <button class="tablinks" onclick="openCity(event, 'presentation-recipe-week')">Recipe of the week</button>
+                                            <button class="tablinks" onclick="openCity(event, 'stretched')">Stretches</button>
+                                            <button class="tablinks" onclick="openCity(event, 'interviews-videos')">Presentations/Guest Speakers</button>
+                                            <button class="tablinks" onclick="openCity(event, 'bonus-extras')">Bonus Material</button>
+
+
+                                            <!--                                        <button class="tablinks" onclick="openCity(event, 'fitness-user-data')">Measurements Record</button>-->
+                                            <!--                                            <button class="tablinks" onclick="openCity(event, 'recipes')">Recipes</button>-->
+                                        <?php }?>
+                                        <!--<button class="tablinks" onclick="openCity(event, 'printableresources')">Printable Resources</button>-->
 
                                         <?php if ( is_user_logged_in() ) { ?>
                                             <a href="<?php echo wp_logout_url(site_url() ); ?>">Logout</a>
@@ -1128,6 +1153,9 @@ function um_current_user_profile(){
                             <p class="message_custom"> <?php echo $message; ?> </p>
                             <div class="profile-info-right">
                                 <!-- activities -->
+                                <div id="stretched" class="tabcontent">
+                                    <h3>Strectches</h3>
+                                </div>
                                 <div id="Dashboard" class="tabcontent">
                                     <h3>My Dashboard</h3>
 
@@ -1228,83 +1256,386 @@ function um_current_user_profile(){
                                 </div>
 
                                 <div id="mybuttonhistory" class="tabcontent">
+                                    <style>
+                                        .measurements-div {column-count: 2}
+                                    </style>
                                     <h3>My History</h3>
-                                    <div>
-                                        <canvas id="layanan"></canvas>
-                                        <canvas id="layanan_subbagian"></canvas>
-                                        <canvas id="thirdChart"></canvas>
-                                        <canvas id="myChart"></canvas>
-                                        <canvas id="myChart"></canvas> -->
+                                    <div class="measurements-div">
+                                        <span class="chest-title">
+                                            Chest
+                                        <canvas id="chestdata"></canvas>
+                                        </span>
+                                        <span class="biceps-title">
+                                            Biceps
+                                        <canvas id="bicepsdata"></canvas>
+                                        </span>
+                                        <span style="font-size: 24px;font-weight:bold; color:#000 !important;" class="quadsleft-title">
+                                            Quads Left
+                                        <canvas id="quadsleft"></canvas>
+                                        </span>
+                                        <span class="quadsleft-title">
+                                            Quads Right
+                                        <canvas id="quadsright"></canvas>
+                                        </span>
+                                        <span class="calfsleft-title">
+                                            Calfs Left
+                                        <canvas id="calfsleft"></canvas>
+                                        </span>
+                                        <span class="calfsright-title">
+                                            Calfs Right
+                                        <canvas id="calfsright"></canvas>
+                                        </span>
+                                        <span class="waist-title-title">
+                                            Waist
+                                        <canvas id="waistdata">Waist</canvas>
+                                        </span>
+                                        <span class="hipes-title-title">
+                                            Hips
+                                        <canvas id="hipsdata">Hips</canvas>
+                                        </span>
+                                        <span class="weight-title">
+                                            Weight
+                                        <canvas id="weightdata">Weight</canvas>
+                                        </span>
                                     </div>
                                     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
                                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                     <script>
                                         $(function () {
-                                            var ctx = document.getElementById("layanan").getContext('2d');
-                                            var data = {
-                                                datasets: [{
-                                                    data: [12, 19, 3, 5, 2, 3],
-                                                    backgroundColor: [
-                                                        '#3C8DBC',
-                                                        '#F56954',
-                                                        '#F39C12',
-                                                    ],
-                                                }],
-                                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                            };
 
-                                            var ctx = document.getElementById("layanan").getContext('2d');
-                                            var data = {
+
+                                            // =============================================================
+                                            //                   Chest Data Chart
+                                            // =============================================================
+
+
+                                            var chestdata = document.getElementById("chestdata").getContext('2d');
+                                            var chestdataget = {
                                                 datasets: [{
-                                                    data: [12, 19, 3, 5, 2, 3],
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
                                                     backgroundColor: [
                                                         '#3C8DBC',
                                                         '#F56954',
                                                         '#F39C12',
                                                     ],
                                                 }],
-                                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
                                             };
-                                            var myDoughnutChart = new Chart(ctx, {
+                                            var chestdatas = new Chart(chestdata, {
                                                 type: 'line',
-                                                data: data,
+                                                data: chestdataget,
                                                 options: {
                                                     responsive: false,
                                                     maintainAspectRatio: false,
                                                     legend: {
                                                         position: 'bottom',
                                                         labels: {
-                                                            boxWidth: 12
+                                                            boxWidth: 16
                                                         }
                                                     }
                                                 }
                                             });
-                                            var ctx_2 = document.getElementById("layanan_subbagian").getContext('2d');
-                                            var data_2 = {
+                                            // =============================================================
+                                            //                   Chest Data Chart  Ends
+                                            // =============================================================
+
+
+
+
+
+                                            // =============================================================
+                                            //                   Biceps Data Chart
+                                            // =============================================================
+
+                                            var bicepdata = document.getElementById("bicepsdata").getContext('2d');
+                                            var bicepsdataget = {
                                                 datasets: [{
-                                                    data: [12, 19, 3, 5, 2, 3],
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
                                                     backgroundColor: [
                                                         '#3C8DBC',
                                                         '#F56954',
                                                         '#F39C12',
                                                     ],
                                                 }],
-                                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
                                             };
-                                            var myDoughnutChart_2 = new Chart(ctx_2, {
+                                            var chestdatas = new Chart(bicepdata, {
                                                 type: 'line',
-                                                data: data_2,
+                                                data: bicepsdataget,
                                                 options: {
                                                     responsive: false,
                                                     maintainAspectRatio: false,
                                                     legend: {
                                                         position: 'bottom',
                                                         labels: {
-                                                            boxWidth: 12
+                                                            boxWidth: 16
                                                         }
                                                     }
                                                 }
                                             });
+
+
+
+                                            // =============================================================
+                                            //                   Biceps Data Chart Ends here
+                                            // =============================================================
+
+
+                                            // =============================================================
+                                            //                   Quads Left Data Chart
+                                            // =============================================================
+
+                                            var quadsleft = document.getElementById("quadsleft").getContext('2d');
+                                            var quadsleftget = {
+                                                datasets: [{
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
+                                                    backgroundColor: [
+                                                        '#3C8DBC',
+                                                        '#F56954',
+                                                        '#F39C12',
+                                                    ],
+                                                }],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
+                                            };
+                                            var quadsleftgets = new Chart(quadsleft, {
+                                                type: 'line',
+                                                data: quadsleftget,
+                                                options: {
+                                                    responsive: false,
+                                                    maintainAspectRatio: false,
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            boxWidth: 16
+                                                        }
+                                                    }
+                                                }
+                                            });
+
+
+                                            // =============================================================
+                                            //                   Quads Left Data Chart Ends Here
+                                            // =============================================================
+
+
+
+
+                                            // =============================================================
+                                            //                   Quads Right Data Chart
+                                            // =============================================================
+
+                                            var quadsright = document.getElementById("quadsright").getContext('2d');
+                                            var quadsrightget = {
+                                                datasets: [{
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
+                                                    backgroundColor: [
+                                                        '#3C8DBC',
+                                                        '#F56954',
+                                                        '#F39C12',
+                                                    ],
+                                                }],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
+                                            };
+                                            var quadsrightgets = new Chart(quadsright, {
+                                                type: 'line',
+                                                data: quadsrightget,
+                                                options: {
+                                                    responsive: false,
+                                                    maintainAspectRatio: false,
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            boxWidth: 16
+                                                        }
+                                                    }
+                                                }
+                                            });
+
+
+                                            // =============================================================
+                                            //                   Quads Right  Data Chart Ends Here
+                                            // =============================================================
+
+
+
+
+                                            // =============================================================
+                                            //                   Calfs Left Data Chart
+                                            // =============================================================
+                                            var calfsleft = document.getElementById("calfsleft").getContext('2d');
+                                            var calfsleftget = {
+                                                datasets: [{
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
+                                                    backgroundColor: [
+                                                        '#3C8DBC',
+                                                        '#F56954',
+                                                        '#F39C12',
+                                                    ],
+                                                }],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
+                                            };
+                                            var calfsleftgets = new Chart(calfsleft, {
+                                                type: 'line',
+                                                data: calfsleftget,
+                                                options: {
+                                                    responsive: false,
+                                                    maintainAspectRatio: false,
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            boxWidth: 16
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // =============================================================
+                                            //                   Calfs Left Data Chart Ends Here
+                                            // =============================================================
+
+                                            // =============================================================
+                                            //                   Calfs Right Data Chart
+                                            // =============================================================
+                                            var calfsright = document.getElementById("calfsright").getContext('2d');
+                                            var calfsrightget = {
+                                                datasets: [{
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
+                                                    backgroundColor: [
+                                                        '#3C8DBC',
+                                                        '#F56954',
+                                                        '#F39C12',
+                                                    ],
+                                                }],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
+                                            };
+                                            var calfsrightgets = new Chart(calfsright, {
+                                                type: 'line',
+                                                data: calfsrightget,
+                                                options: {
+                                                    responsive: false,
+                                                    maintainAspectRatio: false,
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            boxWidth: 16
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // =============================================================
+                                            //                   Calfs Right Data Chart Ends Here
+                                            // =============================================================
+
+
+
+
+                                            // =============================================================
+                                            //                  Waist Data Chart
+                                            // =============================================================
+                                            var waistdata = document.getElementById("waistdata").getContext('2d');
+                                            var waistdataget = {
+                                                datasets: [{
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
+                                                    backgroundColor: [
+                                                        '#3C8DBC',
+                                                        '#F56954',
+                                                        '#F39C12',
+                                                    ],
+                                                }],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
+                                            };
+                                            var waistdatagets = new Chart(waistdata, {
+                                                type: 'line',
+                                                data: waistdataget,
+                                                options: {
+                                                    responsive: false,
+                                                    maintainAspectRatio: false,
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            boxWidth: 16
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // =============================================================
+                                            //                   Waist Data Chart Ends Here
+                                            // =============================================================
+
+
+
+
+                                            // =============================================================
+                                            //                  Hips Data Chart
+                                            // =============================================================
+                                            var hipsdata = document.getElementById("hipsdata").getContext('2d');
+                                            var hipsdataget = {
+                                                datasets: [{
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
+                                                    backgroundColor: [
+                                                        '#3C8DBC',
+                                                        '#F56954',
+                                                        '#F39C12',
+                                                    ],
+                                                }],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
+                                            };
+                                            var hipsdatagets = new Chart(hipsdata, {
+                                                type: 'line',
+                                                data: hipsdataget,
+                                                options: {
+                                                    responsive: false,
+                                                    maintainAspectRatio: false,
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            boxWidth: 16
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // =============================================================
+                                            //                   Hips Data Chart Ends Here
+                                            // =============================================================
+
+
+
+
+
+                                            // =============================================================
+                                            //                  Weight Data Chart
+                                            // =============================================================
+                                            var weightdata = document.getElementById("weightdata").getContext('2d');
+                                            var weightdataget = {
+                                                datasets: [{
+                                                    data: [12, 19, 3, 5, 2, 3 ,8],
+                                                    backgroundColor: [
+                                                        '#3C8DBC',
+                                                        '#F56954',
+                                                        '#F39C12',
+                                                    ],
+                                                }],
+                                                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ,'Sunday'],
+                                            };
+                                            var weightdatagets = new Chart(weightdata, {
+                                                type: 'line',
+                                                data: weightdataget,
+                                                options: {
+                                                    responsive: false,
+                                                    maintainAspectRatio: false,
+                                                    legend: {
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            boxWidth: 16
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // =============================================================
+                                            //                   Weight  Data Chart Ends Here
+                                            // =============================================================
+
+
+
                                         });
                                     </script>
 

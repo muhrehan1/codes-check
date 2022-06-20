@@ -1,49 +1,17 @@
-            <!doctype html>
-            <html lang="en">
-            <head>
-            <meta charset="UTF-8">
-            <meta name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Document</title>
-            </head>
-            <body>
-            <div>
-            <canvas id="myChart"></canvas>
-            </div>
-            <script>
-            const labels = [
-                'January',
-                'February',
-                'March',
-                'April',
-                'May',
-                'June',
-            ];
-
-            const data = {
-                labels: labels,
-                datasets: [{
-                    label: 'My First dataset',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45],
-                }]
-            };
-
-            const config = {
-                type: 'line',
-                data: data,
-                options: {}
-            };
-            </script>
-            <script>
-            const myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
-            </script>
-
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            </body>
-            </html>
+jQuery('.responseData').html(
+'<input type="hidden" name="user_id" value="'+response.Data['0']['user_id']+
+                                '"><strong>Address</strong>: <br><input type="text" name="address" value="'+response.Data['0']['address']+
+                                '"><strong> City</strong>: <br>'+response.Data['0']['city']+
+'<br><strong> State</strong>:<br> '<input type="text" name="state" value=" '+response.Data['0']['state']+'">
+'<br><strong> Zip</strong> : <br> '<input type="text" name="zip"  value="'+response.Data['0']['zip']+'">
+'<br><strong> Occupation</strong>:<br> '<input type="text" name="occupation" value="'+response.Data['0']['occupation']+'">
+'<br><strong> Home Phone</strong> : <br>'<input type="text" name="home_phone"  value="'+response.Data['0']['home_phone']+'">
+'<br><strong> Mobile Phone </strong>: <br>'<input  type="text"  name="mobile_phone"  value="'+response.Data['0']['mobile_phone']+'">
+'<br><strong> Chapter Crossed </strong>:<br>' <input type="text" name="chapter_crossed" value="'+response.Data['0']['chapter_crossed']+'">
+'<br><strong> Office Held</strong>: <br>'<input type="text" name="offices_held" value="'+response.Data['0']['offices_held']+'">
+'<br><strong> Frat Name</strong>: '<input type="text" name="frat_name" value="'+response.Data['0']['frat_name']+'">
+'<br><strong> Data Crossed</strong>:<br> '<input type="text" name="date_crossed" value="'+response.Data['0']['date_crossed']+'">
+'<br><strong> Line Name</strong>: <br>'<input type="text" name="line_name" value="'+response.Data['0']['line_name']+'">
+'<br><strong> Alumni e Affliation</strong>: <br>'<input type="text" name="alumni_chapter_affliation" value="'+response.Data['0']['alumni_chapter_affliation']+'">
+'</td> </tr>'
+)
